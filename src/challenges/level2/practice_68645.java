@@ -1,10 +1,11 @@
-package skill_checks.level2;
+package challenges.level2;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class test1_1 {
+public class practice_68645 {
+    //삼각 달팽이
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
