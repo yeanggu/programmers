@@ -15,23 +15,18 @@ public class practice_68645 {
     }
 
     static void solution(String s) {
-        int num = Integer.parseInt(s);
+        int n = Integer.parseInt(s);
 
-        int size = 0;
-        for (int i = num ; i > 0 ; i--) {
-            size += i;
-        }
-
-        int[] answer = new int[size];
+        int[] answer = new int[(n*(n+1))/2];
 
         int index = 0;
         int count = 1;
-        int temp = num;
-        int floor = num;
+        int repeatCount = n;
+        int floor = n;
         int floorTemp;
         int startFloor = 1;
 
-        while (temp != 0) {
+        while (repeatCount != 0) {
 
             // 아래로 내려가는 로직
             for (int i = startFloor; i <= floor ; i++) {
@@ -42,33 +37,33 @@ public class practice_68645 {
                 }
 
                 index += startFloor;
-                startFloor += 1;
-                count += 1;
+                startFloor ++;
+                count ++;
             }
 
             // 오른쪽으로 직진하는 로직
-            temp -= 1;
-            if (temp == 0) break;
-            for (int i = 0 ; i < temp ; i++) {
-                count += 1;
-                index += 1;
+            repeatCount -= 1;
+            if (repeatCount == 0) break;
+            for (int i = 0 ; i < repeatCount ; i++) {
+                count ++;
+                index ++;
                 answer[index] = count;
             }
 
             // 위로 올라가는 로직
-            temp -= 1;
-            if (temp == 0) break;
+            repeatCount -= 1;
+            if (repeatCount == 0) break;
             floorTemp = floor;
-            for (int i = 0 ; i < temp ; i++) {
+            for (int i = 0 ; i < repeatCount ; i++) {
                 index -= floorTemp;
-                count += 1;
+                count ++;
                 answer[index] = count;
-                floorTemp -= 1;
+                floorTemp --;
             }
 
-            temp -= 1;
-            floor -= 1;
-            count += 1;
+            repeatCount --;
+            floor --;
+            count ++;
             index += floorTemp;
             startFloor = floorTemp + 1;
 
